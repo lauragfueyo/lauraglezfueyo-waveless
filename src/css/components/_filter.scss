@@ -16,20 +16,39 @@
 
 .filter {
 	background: map.get(v.$themeColors, secondary-light);
-	
+
 	@include m.respond-to(max-m) {
 		@include m.position(absolute, $top: 0, $left: -100%, $zIndex: 1);
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .20);
 		height: 100%;
-		overflow: auto;
-		transition: left 300ms ease;
+		overflow: auto;		
+		transition: left 300ms linear;
 		width: min(100%, 296px);
 
 		&.is-open {
+			display: block;
 			left: 0;
 		}
 	}
-	
+
+	@include m.respond-to(max-xs) {
+		display: none;
+		left: 0;
+		position: fixed;
+		transition: opacity 300ms linear, display 200ms linear allow-discrete;
+		width: 100%;
+		$zIndex: 4;
+		
+		&.is-open {
+			opacity: 1;
+		}
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+
 	@include m.respond-to(m) {
 		border-radius: v.$grow*3;
 		margin-top: 2.5em;
