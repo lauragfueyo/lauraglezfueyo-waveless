@@ -1,0 +1,80 @@
+// 1. Breakpoints
+
+// 1.1 min-width
+$breakpoints: (
+	x3s: 0,
+	xxs: 31em,
+	xs: 46.5em,
+	s: 63.9375em,
+	m: 80em,
+	l: 100em,
+) !default;
+
+// 1.2 max-width
+$breakpoints-max-width: (
+	max-xxs: 31em,
+	max-xs: 47em,
+	max-s: 59em,
+	max-m: 67.5em,
+	max-l: 75em,
+	max-xl: 82.5em,
+	max-xxl: 93.5em,
+) !default;
+
+// 2. Fonts
+$base-family: "Nunito", sans-serif;
+$primary-family: "Syne", sans-serif;
+$secondary-family: "Urbanist", sans-serif;
+
+$font-size: (
+	base: 1rem,    //16px
+	xs: .75rem,    //12px
+	s: .875rem,    //14px
+	m: 1.125rem,   //18px
+	l: 1.25rem,    //20px
+	xl: 1.35rem,    //22px
+	xxl: 1.875rem,  //30px
+	xl3: 2.375rem, //38px
+);
+
+$font-weight: (
+	thin: 100,
+	extralight: 300,
+	light: 300,
+	normal: 400,
+	medium: 500,
+	semibold: 600,
+	bold: 700,
+	extrabold: 800,
+	black: 900,
+);
+
+// 3. Colors
+$white: #fff;
+$gray: #6B7d8d;
+$black: #000;
+$base-color: #342e34;
+$primary-color: #622f60;
+$secondary-color: #ff8f50;
+$link-color: $primary-color;
+
+$grow: 8px !default;
+
+$themeColors: (
+	primary: $primary-color,
+	primary-light: #e0d9e0,
+	primary-dark: #4a1f4a,
+	primary-title: #2f222f,
+	secondary: $secondary-color,
+	secondary-light: #fbf6f4,
+	secondary-dark: #d67843,
+	secondary-text: #4e250e,
+	link: $link-color,
+	disabled: #a0989f,
+	disabled-text: #635a63,
+	disabled-dark: #817781,
+	disabled-dark-text: #494149,
+	gray-light: #faf7f5,
+	filters-on: #B85c28,
+	focus: #8a451e,
+);

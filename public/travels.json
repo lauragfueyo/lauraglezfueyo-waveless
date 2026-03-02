@@ -1,0 +1,176 @@
+{
+  "countries": [
+    {
+      "country": "África",
+      "items": [
+        {
+          "id": 1,
+          "image": {
+            "src": "/src/assets/card1.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Quads",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 2,
+          "image": {
+            "src": "/src/assets/card2.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Parapente",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 3,
+          "image": {
+            "src": "/src/assets/card3.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Rafting",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        }
+      ]
+    },
+    {
+      "country": "Asia",
+      "items": [
+        {
+          "id": 4,
+          "image": {
+            "src": "/src/assets/card1.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Explora",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 5,
+          "image": {
+            "src": "/src/assets/card2.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Buceo",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 6,
+          "image": {
+            "src": "/src/assets/card3.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Paracaídas",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 7,
+          "image": {
+            "src": "/src/assets/card1.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Snowboard",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 8,
+          "image": {
+            "src": "/src/assets/card2.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Surf",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        },
+        {
+          "id": 9,
+          "image": {
+            "src": "/src/assets/card3.webp",
+            "alt": "Templo en Bangkok"
+          },
+          "category": "Quads",
+          "country": "Marruecos, África",
+          "days": 9,
+          "name": "Descubre Bangkok con Iberojet",
+          "pricing": {
+            "from": 248,
+            "beforeTax": 1124,
+            "tax": 4.43,
+            "fees": 150.42,
+            "final": 2455
+          }
+        }
+      ]
+    }
+  ]
+}

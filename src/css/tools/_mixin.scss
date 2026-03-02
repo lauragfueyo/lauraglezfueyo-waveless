@@ -1,0 +1,109 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use 'variable' as v;
+
+// Breakpoints media query
+@mixin respond-to($breakpoint) { 
+	// 1.1 Media min-width
+	@if map.has-key(v.$breakpoints, $breakpoint) {
+		@media (min-width: map.get(v.$breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	// 1.2 Media max-width
+	@if map.has-key(v.$breakpoints-max-width, $breakpoint) {
+		@media (max-width: map.get(v.$breakpoints-max-width, $breakpoint)) {
+			@content;
+		}
+	}
+}
+
+@function breakpoint-min($name, $breakpoints: v.$breakpoints) {
+	$min: map.get($breakpoints, $name);
+	@if $min != 0 {
+		@return $min;
+	} @else {
+		@return null;
+	}
+}
+
+@function breakpoint-medida($name, $breakpoints: v.$breakpoints) {
+	$bm: breakpoint-min($name, $breakpoints);
+	@if $bm == null {
+		@return '';
+	} @else {
+		@return '-#{$name}';
+	}
+}
+	
+@mixin media-breakpoint-up($name, $breakpoints: v.$breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// placeholders
+@mixin placeholder($color) {
+	$placeholders: ':-webkit-input' ':-moz' '-moz' '-ms-input';
+	@each $placeholder in $placeholders {
+		*:#{$placeholder}-placeholder {
+			color: $color;
+		}
+	}
+}
+
+// flex-box
+@mixin flex-container($display: flex, $wrap: null, $direction: null, $justify: null, $align: null, $items: null, $gap: null, $place: null) {
+	align-content: $align;
+	align-items: $items;
+	display: $display;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	gap: $gap;
+	justify-content: $justify;
+	place-content: $place;
+}
+
+// font
+@function font-size($fuente) {
+	$size: map.get(v.$font-size, $fuente);
+	@return $size;
+}
+@function font-weight($weight) {
+	$weight: map.get(v.$font-weight, $weight);
+	@return $weight;
+}
+
+@mixin font($align: null, $color: null, $decoration: null, $family: null, $line: null, $spacing: null, $size: null, $style: null, $transform: null, $weight: null ) {
+	$rems: font-size($size);
+	$grosor: font-weight($weight);
+	
+	color: $color;
+	font-family: $family;
+	font-size: $rems;
+	font-style: $style;
+	font-weight: $grosor;
+	letter-spacing: $spacing;
+	line-height: $line;
+	text-align: $align;
+	text-decoration: $decoration;
+	text-transform: $transform;
+}
+
+// position
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null, $zIndex: null) {
+	bottom: $bottom;
+	left: $left;
+	position: $position;
+	right: $right;
+	top: $top;
+	z-index: $zIndex;
+}
+
+

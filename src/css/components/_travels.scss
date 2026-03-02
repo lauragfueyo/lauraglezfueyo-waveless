@@ -1,0 +1,85 @@
+@use "sass:map";
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+@use '../generic/card';
+
+.travels {
+	position: relative;
+	
+	&__container {
+		margin-inline: auto;
+		max-width: 100%;
+		padding: v.$grow*7 0;
+
+		@include m.respond-to(xs) {
+			max-width: 552px;
+			padding-top: v.$grow*6;
+		}
+
+		@include m.respond-to(s) {
+			max-width: 840px;
+		}
+		
+		@include m.respond-to(m) {
+			max-width: 1128px;
+		}
+	}
+
+	&__title {
+		@include m.font($align: center, $family: v.$primary-family, $line: 105.26%, $size: xl3, $weight: bold);
+		margin-bottom: v.$grow;
+	}
+	
+	&__description {
+		@include m.font($align: center, $color: v.$gray, $line: 118.182%, $size: xl);
+	}
+
+	&__wrapper {
+		padding: v.$grow*5 v.$grow*2 0;
+
+		@include m.respond-to(xs) {
+			padding: v.$grow*6 0 0;
+		}
+		
+		@include m.respond-to(m) {
+			align-items: start;
+			display: grid;
+			gap: v.$grow*3;
+			grid-template-columns:  264px minmax(0, 1fr);
+			padding-top: v.$grow*9;
+		}
+	}
+
+	&__toggle-filters {
+		display: none;
+
+		@include m.respond-to(max-m) {
+			background: map.get(v.$themeColors, gray-light) url(/src/assets/ico-filtros.svg) no-repeat 14px 50%;
+			border-radius: 208px;
+			display: block;
+			margin: 0 auto v.$grow*3;
+			padding: v.$grow v.$grow*1.75 v.$grow v.$grow*6;
+
+			@include m.respond-to(s) {
+				margin-left: 0;
+			}
+		}
+	}
+
+	&__list {
+		display: grid;
+		gap: v.$grow*3;
+		grid-template-columns: repeat(auto-fill, 100%);
+		justify-content: start;
+		margin-bottom: v.$grow*3;
+
+		@include m.respond-to(xs) {
+			grid-template-columns: repeat(auto-fill, 264px);
+		}
+	}
+
+	&__content-title {
+		@include m.font($line: 109%, $size: xl, $weight: semibold);
+		margin-bottom: v.$grow*2;
+	}
+}

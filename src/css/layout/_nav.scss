@@ -1,0 +1,96 @@
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+.nav {
+	display: none;
+	
+	@include m.respond-to(s) {
+		display: block;
+		height: auto;
+	}
+
+	.is-navon & {
+		@include m.position(fixed, $top: 70px, $left: 0);
+		background: v.$white;
+		display: block;
+		height: calc(100vh - 70px);
+		opacity: 1;
+		padding-inline: v.$grow*3;
+		transition: opacity 500ms linear, display 1s linear allow-discrete;
+		width: 100%;
+		
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+	&__list {
+		@include m.respond-to(s) {
+			@include m.flex-container($justify: center, $gap: v.$grow*2);
+		}
+
+		@include m.respond-to(l) {
+			gap: v.$grow*9;
+		}
+	}
+
+	&__item {
+		&:last-child {
+		  flex: 1;
+		}
+	}
+
+	&__link {
+		@include m.font($color: v.$base-color, $size: base, $weight: semibold);
+		@include m.flex-container($items: center, $gap: v.$grow*1.5, $wrap: wrap);
+		overflow: hidden;
+		padding: v.$grow*2 v.$grow*1.5;
+		position: relative;
+		
+		@include m.respond-to(s) {
+			min-height: 80px;
+			padding: v.$grow*3 v.$grow*1.5;
+		}
+
+		&::before {
+			@include m.position(absolute, $bottom: -100%, $left: 50%);
+			border: 6px solid transparent;
+			border-bottom-width: 8px;
+			border-bottom-color: v.$secondary-color;
+			content: "";
+			height: 0;
+			transition: bottom 300ms 100ms ease;
+			transform: translateX(-50%);
+			width: 0;
+		}
+
+		&::after {
+			@include m.position(absolute, $bottom: 0, $left: 0);
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2px;
+			background-color: v.$secondary-color;
+			transform: scale(0, 1);
+			transition: transform 300ms ease;
+			transform-origin: center;
+		}
+
+		&.is-on,
+		&:hover {
+			@include m.font($decoration: none);
+			
+			&::before {
+				bottom: 2px;
+			}
+
+			&::after {
+				transform: scale(1);
+			}
+		}
+
+		&.is-on {
+			@include m.font($weight: bold);
+		}
+	}
+}

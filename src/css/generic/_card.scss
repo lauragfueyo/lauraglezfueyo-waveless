@@ -1,0 +1,180 @@
+@use "sass:map";
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+.card {
+	background: v.$white;
+	border-radius: 24px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .20);
+	container: parent / inline-size;
+	position: relative;
+	
+	&__image {
+		border-top-left-radius: 24px;
+		border-top-right-radius: 24px;
+		width: 100%;
+	}
+
+	&__category {
+		@include m.font($line: 133.3%, $size: xs, $weight: extrabold);
+		@include m.position(absolute, $top: v.$grow*2, $right: v.$grow*2);
+		background: map.get(v.$themeColors, secondary);
+		border-radius: v.$grow*5;
+		padding: .35em 1.15em;
+	}
+
+	&__content {
+		padding: v.$grow*2;
+
+		&.is-pricing {
+			align-items: end;
+			background-color: map.get(v.$themeColors, secondary-light);
+			border-bottom-left-radius: 24px;
+			border-bottom-right-radius: 24px;
+			display: grid;
+			gap: v.$grow;
+			grid-template-columns: 1fr auto;
+			grid-template-areas: "price price" "cta cta";
+
+			@include m.respond-to(xs) {
+				align-items: center;
+  				grid-template-areas: "price cta";
+				gap: 0;
+			}
+		}
+	}
+
+	&__country {
+		@include m.font($color: v.$primary-color, $family: v.$primary-family, $line: 128%, $size: s, $weight: bold);
+		margin-bottom: v.$grow;
+	}
+
+	&__days {
+		@include m.font($color: v.$base-color, $family: v.$primary-family, $line: 128%, $size: s, $weight: medium);
+	}
+
+	&__title {
+		@include m.font($line: 122.2%, $size: m, $weight: bold);
+	}
+
+	&__price {
+		grid-area: price;
+		
+		@include m.respond-to(max-xs) {
+			@include m.flex-container($items: flex-end, $justify: space-between);
+		}
+
+		&-fromtext {
+			@include m.font($line: 133.3%, $size: xs, $weight: medium);
+			display: block;
+		}
+
+		&-from {
+			@include m.font($line: 109%, $size: xl, $weight: bold);
+		}
+
+		&-button {
+			@include m.font($align: left, $color: v.$primary-color, $decoration: underline, $line: 114%, $size: s, $weight: semibold);
+			order: -1;
+			
+			&:after {
+				background: transparent url(/src/assets/ico-arrow-down.svg) no-repeat 0 0;
+				content: "";
+				display: inline-block;
+				height: 5px;
+				transition: transform 300ms linear;
+				width: 8px;
+			}
+
+			&.is-on,
+			&:hover {
+				@include m.font($decoration: none);
+
+				&:after {
+					transform: rotate(180deg);
+				}
+			}
+		}
+
+		&-details {
+			@include m.position(fixed, $top: 0, $left: 0, $zIndex: 3);
+			background: v.$white;
+			height: 100%;
+			width: 100%;
+			
+			@include m.respond-to(xs) {
+				@include m.position(absolute, $top: 100%, $left: 0);
+				border: 1px solid map.get(v.$themeColors, primary-light);
+				border-radius: v.$grow*3;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .20);
+				height: auto;
+				transform: translateY(-8px);
+				width: min(400px, 544px);
+
+				@include m.respond-to(max-m) {
+					@at-root .card:nth-child(2n+2) & {
+						left: auto;
+						right: 0;
+					}
+				}
+
+				@include m.respond-to(m) {
+					@at-root .card:nth-child(3n+3) & {
+						left: auto;
+						right: 0;
+					}
+				}
+			}
+
+			&-content {
+				padding: v.$grow*2 v.$grow*3;
+			
+				&.is-bgcolor {
+					@include m.font($line: 133.3%, $size: m, $weight: bold);
+					@include m.flex-container($items: center, $justify: space-between);
+					background: map.get(v.$themeColors, secondary-light);
+
+					&:first-child {
+						border-bottom: 1px solid map.get(v.$themeColors, primary-light);
+						border-top-left-radius: v.$grow*3;
+						border-top-right-radius: v.$grow*3;
+					}
+
+					&:last-child {
+						border-top: 1px solid map.get(v.$themeColors, primary-light);
+						border-bottom-left-radius: v.$grow*3;
+						border-bottom-right-radius: v.$grow*3;
+
+						@include m.respond-to(max-xs) {
+							background: transparent;
+						}
+					}
+				}
+			}
+
+			&-title,
+			.card__country,
+			.card__days {
+				@include m.font($line: 133.3%, $size: m);
+			}
+
+			&-price {
+				@include m.font($size: m, $weight: bold);
+
+				@at-root .card__price-details-content.is-bgcolor & {
+					@include m.font($size: xl);
+				}
+			}
+			
+			&-item {
+				@include m.flex-container($items: center, $justify: space-between);
+				@include m.font($line: 125%, $weight: medium);
+				padding-block: v.$grow;
+			}
+		}
+	}
+
+	&__cta {
+		grid-area: cta;
+	}
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waveless - Vive tus propias aventuras</title>
+    <meta name="description" content="Waveless es una agencia para los que les gusta explorar y conocer mundo sin complejos." />
+    <meta property="og:description" content="Waveless es una agencia para los que les gusta explorar y conocer mundo sin complejos." />
+	  <meta property="og:title" content="Waveless - Vive tus propias aventuras">
+    <meta property="og:image" content="/src/assets/og-image.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Syne:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <p class="header__logo"><img src="/src/assets/logo-waveless.svg" alt="Waveless Logo" width="145" height="32" /></p>
+        <button class="header__navbutton" type="button" id="menubutton" aria-haspopup="true" aria-controls="menu" aria-label="Mostrar menú principal">
+            <span></span>
+            <span></span>
+            <span></span>
+				</button>
+        <nav class="nav" aria-label="Menú principal">
+          <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link is-on" href="#"><img src="/src/assets/ico-aventura.svg" alt="Aventura" width="24" height="24" />Aventura</a></li>
+          <li class="nav__item"><a class="nav__link" href="#"><img src="/src/assets/ico-destinos.svg" alt="Destinos" width="24" height="24" />Destinos</a></li>
+          <li class="nav__item"><a class="nav__link" href="#"><img src="/src/assets/ico-alojamiento.svg" alt="Alojamiento" width="24" height="24" />Alojamiento</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Sobre nosotros</a></li>
+          </ul>
+        </nav>
+        <p class="header__cta"><a class="button"  href="#">Reserva</a></p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="carousel"></section>
+      <section id="travels"></section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer--sup">
+        <img src="/src/assets/logo-waveless.svg" alt="Waveless Logo" width="145" height="32" />
+      </div>
+      <div class="footer--inf">
+      <p>&copy; 2024 Waveless. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

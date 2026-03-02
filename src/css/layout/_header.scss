@@ -1,0 +1,79 @@
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+.header {
+	background-color: v.$white;
+	border-bottom: 1px solid v.$secondary-color;
+	
+	.scroll-on &,
+	.is-navon & {
+		@include m.position(fixed, $top: 0, $zIndex: 3);
+		width: 100%;
+	}
+
+	@include m.respond-to(max-s) {
+		padding-block: v.$grow*3;
+	}
+	
+	@include m.respond-to(max-xxs) {
+		padding-block: v.$grow*2;
+	}
+	
+	.container {
+		@include m.flex-container($items: center, $justify: space-between);
+	}
+
+	&__logo {
+		display: block;
+	}
+
+	&__cta {
+		@include m.respond-to(max-s) {
+			display: none;
+
+			.is-navon & {
+				@include m.position(fixed, $bottom: 20px, $left: 50%);
+				display: block;
+				transform: translateX(-50%);
+			}
+		}
+	}
+
+	&__navbutton {
+		display: none;
+
+		@include m.respond-to(max-s) {
+			display: block;
+			height: 2rem;
+			width: 1.375em;
+
+			span {
+				background-color: v.$primary-color;
+				border-radius: 2px;
+				display: block;
+				height: 2px;
+				transform-origin: center;
+				transition: transform 0.3s ease, opacity 0.3s ease;
+				width: 100%;
+
+				&:not(:last-child) {
+					margin-bottom: 5px;
+				}
+
+				.is-navon & {
+					&:nth-child(1) {
+						transform: translate(0, 7px) rotate(45deg);
+					}
+		
+					&:nth-child(2) {
+						opacity: 0;
+					}
+		
+					&:nth-child(3) {
+						transform: translate(0, -7px) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+}

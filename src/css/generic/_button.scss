@@ -1,0 +1,65 @@
+@use "sass:map";
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+.button {
+	@include m.font($align: center, $color: v.$white, $decoration: none, $size: base, $weight: semibold);
+	background: v.$primary-color;
+	border-radius: v.$grow*26;
+	cursor: pointer;
+	display: inline-block;
+	padding: .75em 2.5em;
+	transition: background 500ms ease;
+
+	&:hover,
+	&:focus-visible {
+		@include m.font($color: v.$white, $decoration: none);
+		background: map.get(v.$themeColors, primary-dark);
+	}
+
+	&:disabled {
+		@include m.font($color: map.get(v.$themeColors, disabled-text));
+		background: map.get(v.$themeColors, disabled);
+		cursor: not-allowed;
+	}
+
+	&.is-secondary {
+		@include m.font($color: map.get(v.$themeColors, secondary-text));
+		background: v.$secondary-color;
+
+		&:hover,
+		&:focus-visible {
+			background: map.get(v.$themeColors, secondary-dark);
+		}
+
+		&:disabled {
+			@include m.font($color: map.get(v.$themeColors, disabled-dark-text), $decoration: none);
+			background: map.get(v.$themeColors, disabled-dark);
+		}
+	}
+
+	&.is-bordered {
+		@include m.font($color: v.$primary-color);
+		background: v.$white;
+		border: 1px solid v.$primary-color;
+		padding: .58em 1.65em;
+
+		@container parent (width > 240px) {
+			& {
+				display: block;
+			}
+		}
+
+		&:hover,
+		&:focus-visible {
+			@include m.font($color: map.get(v.$themeColors, primary-dark));
+			border-color: map.get(v.$themeColors, primary-dark);
+		}
+
+		&:disabled {
+			@include m.font($color: map.get(v.$themeColors, disabled-dark-text), $decoration: none);
+			background: v.$white;
+			border-color: map.get(v.$themeColors, disabled-dark);
+		}
+	}	
+}

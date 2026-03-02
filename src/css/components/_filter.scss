@@ -1,0 +1,152 @@
+@use "sass:map";
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+%hover-style {
+	@include m.font($color: map.get(v.$themeColors, filters-on));
+
+	svg path {
+		stroke: map.get(v.$themeColors, filters-on);
+	}
+
+	&::after {
+		background: map.get(v.$themeColors, filters-on);
+	}
+}
+
+.filter {
+	background: map.get(v.$themeColors, secondary-light);
+	
+	@include m.respond-to(max-m) {
+		@include m.position(absolute, $top: 0, $left: -100%, $zIndex: 1);
+		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .20);
+		height: 100%;
+		overflow: auto;
+		transition: left 300ms ease;
+		width: min(100%, 296px);
+
+		&.is-open {
+			left: 0;
+		}
+	}
+	
+	@include m.respond-to(m) {
+		border-radius: v.$grow*3;
+		margin-top: 2.5em;
+	}
+
+	&__header {
+		@include m.flex-container($items: center, $justify: space-between);
+		border-bottom: 1px solid map.get(v.$themeColors, primary-light);
+		padding: v.$grow*3.5 v.$grow*3;
+		
+		&-title {
+			@include m.font($align: center, $family: v.$primary-family, $line: 133.3%, $size: m, $weight: bold);
+		}
+
+		&-close {
+			display: none;
+
+			@include m.respond-to(max-m) {
+				background: url(/src/assets/ico-close.svg) no-repeat 0 0;
+				display: inline-block;
+				height: 14px;
+				margin-left: auto;
+				width: 14px;
+			}
+		}
+	}
+
+	&__content {
+		padding: v.$grow*3;
+	}
+
+	&__category {
+		&-summary {
+			@include m.flex-container($items: center, $gap: v.$grow);
+			@include m.font($line: 125%, $weight: bold);
+			cursor: pointer;
+			padding: v.$grow*2 0;
+
+			&::after {
+				background: v.$base-color;
+				content: "";
+				clip-path: polygon(85.92% 41.13%, 84.54% 52.87%, 22.54% 90.91%, 4.89% 90.91%, 3.68% 90.16%, 3.68% 79.27%, 56.96% 46.57%, 3.68% 13.88%, 4.89% 2.25%, 22.54% 2.25%);
+				display: inline-block;
+				height: 12px;
+				margin-left: auto;
+				transition: transform 0.3s ease;
+				width: 8px;
+			}
+
+			&:hover {
+				@extend %hover-style;
+			}
+		}
+
+		&-options:not(.no-grow) {
+			padding-inline: v.$grow*2;
+		}
+
+		&-option {
+			padding-block: v.$grow*1.5;
+			
+			&:has(.filter__category-label.is-labelinput) {
+				padding-block: v.$grow;
+				position: relative;
+
+				&:has(input:focus, input:not(:placeholder-shown)) .filter__category-label.is-labelinput {
+					@include m.font($color: map.get(v.$themeColors, filters-on), $size: xs, $weight: bold);
+					left: v.$grow*6.25;
+					top: 1em;
+					transform: none;
+				}
+			}
+		}
+
+		&-checkbox {
+			margin-right: v.$grow*1.5;
+			
+			&:checked + label {
+				@include m.font($weight: bold);
+			}
+		}
+
+		&-label {
+			@include m.font($line: 142%, $size: s, $weight: semibold);
+
+			&.is-labelinput {
+				@include m.font($color: map.get(v.$themeColors, disabled-dark));
+				@include m.position(absolute, $top: 50%, $left: v.$grow*6.25, $zIndex: 1);
+				order: 1;
+				pointer-events: none;
+				transform: translateY(-50%);
+				transition: all 0.2s ease;
+			}
+		}
+
+
+		&-input {
+			background: v.$white url(/src/assets/ico-precio.svg) no-repeat 12px 50%;
+			border: 1px solid v.$primary-color;
+			border-radius: 208px;
+			padding: v.$grow*2 v.$grow*1.5 v.$grow v.$grow*6.25;
+			width: 100%;
+		}
+
+		&-showmore {
+			@include m.font($color: v.$primary-color, $decoration: underline, $line: 142%, $size: s, $weight: bold);
+			margin-block: v.$grow*2;
+		}
+
+		&[open] {
+			summary {
+				@extend %hover-style;
+
+				&::after {
+					transform: rotate(90deg);
+				}
+			}
+		}
+	}
+}

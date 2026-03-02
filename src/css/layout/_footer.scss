@@ -1,0 +1,29 @@
+@use "sass:map";
+@use '../tools/variable' as v;
+@use '../tools/mixin' as m;
+
+.footer {
+	> div {
+		padding-inline: v.$grow*3;
+	}
+
+	&--sup {
+		background-color: map.get(v.$themeColors, secondary-light); 
+		border-top: 1px solid #fAf7f5;
+		padding-block: 2.8125em;
+
+		@include m.respond-to(m) {
+			text-align: center;
+		}
+	}
+
+	&--inf {
+		background-color: map.get(v.$themeColors, primary-light); 
+		border-top: 1px solid #fAf7f5;
+		padding-block: 1em;
+
+		p {
+			@include m.font($align: center, $color: v.$primary-color, $size: s, $weight: bold);
+		}
+	}
+}
