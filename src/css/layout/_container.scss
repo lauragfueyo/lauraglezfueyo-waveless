@@ -11,19 +11,15 @@
 	width: 100%; 
 	
 	@include m.respond-to(xs) {
-		max-width: 744px;
+		max-width: 46.5em;
 	}
 	
 	@include m.respond-to(s) {
-		max-width: 1023px;
+		max-width: 63.9375em;
 		padding-inline: v.$grow*4;
 	}
-	
+		
 	@include m.respond-to(m) {
-		max-width: 1023px;
-	}
-	
-	@include m.respond-to(m) {
-		max-width: 1440px;
+		max-width: 90em;
 	}
 }

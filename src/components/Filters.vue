@@ -140,7 +140,7 @@
 </template>
 
 <script setup>
-import { computed, watch, ref } from 'vue';
+import { computed, watch, ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
 	filters: { type: Object, default: () => ({ 
@@ -179,6 +179,12 @@ const hideFiltersClick = () => {
 	emit('update:filters', { ...props.filters, showFilters: false });
 };
 
+const onKeydownFunction = (e) => {
+	if (e.key === 'Escape' && props.filters?.showFilters === true) {
+		hideFiltersClick();
+	}
+};
+
 function slug (str) {
 	return String(str || '')
 		.toLowerCase()
@@ -199,6 +205,14 @@ const minPrice = computed({
 const maxPrice = computed({
 	get() { return props.filters?.maxPrice ?? null },
 	set(v) { emit('update:filters', { ...props.filters, maxPrice: v }) }
+});
+
+onUnmounted(() => {
+	document.removeEventListener('keydown', onKeydownFunction);
+});
+
+onMounted(() => {
+	document.addEventListener('keydown', onKeydownFunction);
 });
 
 </script>

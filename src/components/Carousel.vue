@@ -10,7 +10,7 @@
 						<img class="embla__slide__image" src="/src/assets/carousel-mobile.webp" alt="" />
 					</picture>
 					<div class="embla__slide__content">
-						<h2 class="embla__slide__title">Ruta por Australia</h2>
+						<p class="embla__slide__title">Ruta por Australia</p>
 						<p class="embla__slide__text">Si te va la aventura, no te lo puedes perder</p>
 						<a href="#" class="button is-secondary">Más información <span class="screen-reader-only">sobre Ruta por Australia</span></a>
 					</div>

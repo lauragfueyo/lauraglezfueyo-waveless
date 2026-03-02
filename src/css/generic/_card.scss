@@ -111,14 +111,14 @@
 				transform: translateY(-8px);
 				width: min(400px, 544px);
 
-				@include m.respond-to(max-m) {
+				@include m.respond-to(max-s) {
 					@at-root .card:nth-child(2n+2) & {
 						left: auto;
 						right: 0;
 					}
 				}
 
-				@include m.respond-to(m) {
+				@include m.respond-to(s) {
 					@at-root .card:nth-child(3n+3) & {
 						left: auto;
 						right: 0;
@@ -138,6 +138,10 @@
 						border-bottom: 1px solid map.get(v.$themeColors, primary-light);
 						border-top-left-radius: v.$grow*3;
 						border-top-right-radius: v.$grow*3;
+
+						@include m.respond-to(max-xs) {
+							border-radius: 0;
+						}
 					}
 
 					&:last-child {
@@ -147,6 +151,7 @@
 
 						@include m.respond-to(max-xs) {
 							background: transparent;
+							border-radius: 0;
 						}
 					}
 				}

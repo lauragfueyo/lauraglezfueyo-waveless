@@ -49,6 +49,7 @@
 					</div>
 					<!-- Mensaje cuando no hay resultados tras aplicar filtros -->
 					<div v-if="filteredCountries.length === 0" class="travels__no-results" role="status" aria-live="polite">
+						<img src="/src/assets/not-found.webp" alt="" width="253" height="196" />
 						<p>No se han encontrado viajes que coincidan con los filtros aplicados.</p>
 					</div>
 				</div>
@@ -102,7 +103,7 @@ const closeDetails = () => {
 	openDetailsId.value = null;
 };
 
-const _onKeydown = (e) => {
+const onKeydownFunction = (e) => {
 	if (e.key === 'Escape' && openDetailsId.value != null) {
 		closeDetails();
 	}
@@ -130,7 +131,7 @@ const categoriesList = computed(() => {
 });
 
 onUnmounted(() => {
-	document.removeEventListener('keydown', _onKeydown);
+	document.removeEventListener('keydown', onKeydownFunction);
 });
 
 onMounted(async () => {
@@ -139,7 +140,7 @@ onMounted(async () => {
 		const data = await res.json();
 		countries.value = data.countries || [];
 		
-		document.addEventListener('keydown', _onKeydown);
+		document.addEventListener('keydown', onKeydownFunction);
 	} catch (e) {
 		console.error('Failed to load travels:', e);
 	}
