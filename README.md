@@ -18,23 +18,18 @@ La estructura de carpetas es la siguiente:
 
 He mantenido el archivo principal `style.scss` en la raíz de la carpeta CSS, ya que en este proyecto solo es necesario un punto de entrada. En proyectos de mayor tamaño podría contemplarse una estructura adicional (por ejemplo, una carpeta `theme` o múltiples entry points por página).
 
-En cuanto a los recursos gráficos, he utilizado formatos modernos como WebP y SVG para optimizar el rendimiento, lo que contribuye positivamente a la carga de la página.
+En cuanto a los recursos gráficos, he utilizado formatos modernos como WebP y SVG para optimizar el rendimiento, lo que contribuye positivamente a la carga de la página. Las tipografías se han integrado mediante Google Fonts utilizando el embed code incluido en el `<head>` del HTML, asegurando su correcta carga desde el inicio del documento.
 
 Se ha trabajado el etiquetado semántico y el uso de atributos ARIA para reforzar la accesibilidad, buscando que el contenido sea perceptible, operable, comprensible y robusto para todos los usuarios, independientemente de sus capacidades o del dispositivo utilizado.
 
 El desarrollo se ha realizado con enfoque mobile-first, garantizando una correcta visualización y adaptación en distintos dispositivos.
-
-
-
-Etiquetado semnatico y uso de marcado aria para potenciar la accesibilidad de la página. Creando contenido que pueda ser perceptible, operable, comprensible y robusto para todos los usuarios, independientemente de sus capacidad físicas, cognitivas o tecnológicas.
-
-Web adaptable mobile first para la correcta visulización en los diferentes dispositivos.
 
 ## Comentarios
 Me gustaría compartir algunos detalles observados durante la maquetación:
 
 - En los textos del carrusel, el tamaño del título y la descripción en versión escritorio es inferior al de resoluciones más pequeñas. He mantenido las medidas indicadas para ser fiel al diseño, aunque me ha resultado llamativo.
 - En el footer ocurre algo similar con el logotipo: en escritorio está centrado, mientras que en resoluciones pequeñas aparece alineado a la izquierda, manteniéndose el texto legal centrado. Lo indico por si pudiera tratarse de una pequeña inconsistencia de diseño.
+- En el tooltip he observado que la tipografía utilizada es diferente a las dos fuentes principales definidas en el proyecto. No me queda claro si se trata de una tercera tipografía intencionada o si puede ser una pequeña inconsistencia en el diseño, por lo que he mantenido la indicada en Figma.
 - Revisando las distintas pantallas del Figma, he observado que en la página de “Organismos” existe un popup (posiblemente para el detalle de cada viaje). Al no estar incluido en la página principal ni formar parte de los elementos solicitados en la prueba, no lo he maquetado.
 
 ## Instalación y requisitos
