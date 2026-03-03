@@ -1,7 +1,7 @@
 import { createApp, h, Suspense } from 'vue';
-import './css/style.scss';
-import Travels from './components/Travels.vue';
-import Carousel from './components/Carousel.vue';
+import '../css/style.scss';
+import Travels from '../components/Travels.vue';
+import Carousel from '../components/Carousel.vue';
 
 document.addEventListener('DOMContentLoaded', function() {;
 	scrollOn();
