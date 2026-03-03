@@ -17,7 +17,7 @@
 								<div class="card__content">
 									<p class="card__category">{{ item.category }}</p>
 									<p class="card__country">{{ item.country }}, <span class="card__days">{{ item.days }} días</span></p>
-									<h3 class="card__title">{{ item.name }}</h3>
+									<a href="" class="card__title">{{ item.name }}</a>
 								</div>
 								<div class="card__content is-pricing">
 									<div class="card__price">
@@ -49,7 +49,6 @@
 					</div>
 					<!-- Mensaje cuando no hay resultados tras aplicar filtros -->
 					<div v-if="filteredCountries.length === 0" class="travels__no-results" role="status" aria-live="polite">
-						<img src="/src/assets/not-found.webp" alt="" width="253" height="196" />
 						<p>No se han encontrado viajes que coincidan con los filtros aplicados.</p>
 					</div>
 				</div>

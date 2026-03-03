@@ -42,12 +42,28 @@
 		}
 
 		&__title {
-			@include m.font($family: v.$primary-family, $line: 113.3%, $size: xl3, $weight: bold);
+			@include m.font($family: v.$primary-family, $line: 112.5%, $size: xl4, $weight: bold);
+
+			@include m.respond-to(xs) {
+				@include m.font($line: 111.76%, $size: xl5);
+			}
+
+			@include m.respond-to(m) {
+				@include m.font($line: 113.3%, $size: xl3);
+			}
 		}
 
 		&__text {
-			@include m.font($line: 130%, $size: l, $weight: medium);
+			@include m.font($line: 116.67%, $size: xxl, $weight: medium);
 			margin-bottom: v.$grow*6;
+
+			@include m.respond-to(xs) {
+				@include m.font($line: 125%);
+			}
+
+			@include m.respond-to(m) {
+				@include m.font($line: 130%, $size: l);
+			}
 		}
 	}
 

@@ -26,12 +26,28 @@
 	}
 
 	&__title {
-		@include m.font($align: center, $family: v.$primary-family, $line: 105.26%, $size: xl3, $weight: bold);
+		@include m.font($align: center, $family: v.$primary-family, $line: 106.67%, $size: xl3, $weight: bold);
 		margin-bottom: v.$grow;
+
+		@include m.respond-to(xs) {
+			@include m.font($size: xl4);
+		}
+
+		@include m.respond-to(s) {
+			@include m.font($line: 105.8%, $size: xl5);
+		}
+
+		@include m.respond-to(m) {
+			@include m.font($line: 105.26%, $size: xl6);
+		}
 	}
 	
 	&__description {
-		@include m.font($align: center, $color: v.$gray, $line: 118.182%, $size: xl);
+		@include m.font($align: center, $color: v.$gray, $line: 120%, $size: l);
+
+		@include m.respond-to(s) {
+			@include m.font($line: 118.82%, $size: xl);
+		}
 	}
 
 	&__wrapper {
@@ -86,9 +102,5 @@
 	&__no-results {
 		@include m.font($align: center, $line: 118.182%, $size: xl);
 		margin-top: v.$grow*5;
-
-		img {
-			margin-bottom: v.$grow*3;
-		}
 	}
 }

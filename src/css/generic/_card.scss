@@ -54,7 +54,7 @@
 	}
 
 	&__title {
-		@include m.font($line: 122.2%, $size: m, $weight: bold);
+		@include m.font($decoration: none, $color: v.$base-color, $line: 122.2%, $size: m, $weight: bold);
 	}
 
 	&__price {

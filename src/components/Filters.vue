@@ -29,7 +29,7 @@
 					</ul>
 
 					<button
-						v-if="categoriesList.length > limit"
+						v-if="categoriesForLength('destinos') > limit"
 						type="button"
 						class="filter__category-showmore"
 						@click="() => toggleShowAll('destinos')"
@@ -65,7 +65,7 @@
 					</ul>
 
 					<button
-						v-if="categoriesList.length > limit"
+						v-if="categoriesForLength('aventura') > limit"
 						type="button"
 						class="filter__category-showmore"
 						@click="() => toggleShowAll('aventura')"
@@ -103,7 +103,7 @@
 					</ul>
 
 					<button
-						v-if="categoriesList.length > limit"
+						v-if="categoriesForLength('alojamiento') > limit"
 						type="button"
 						class="filter__category-showmore"
 						@click="() => toggleShowAll('alojamiento')"
@@ -152,12 +152,28 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:filters']);
 
-const categoriesList = [
-	'Quads','Parapente','Rafting','Explora','Buceo','Paracaídas','Snowboard','Surf',
-	'Senderismo','Escalada','Kayak','Ciclismo','Esquí','Windsurf','Kitesurf','Snorkel',
-	'Buceo nocturno','Safari','Trekking','Camping','Buceo técnico','Observación de aves',
-	'Tour gastronómico','Enoturismo','Fotografía','Yoga retreat','Spa','Cultural','City break'
-];
+const categoriesMap = {
+	destinos: [
+		'Europa',
+		'Asia',
+		'América',
+		'África',
+		'Oceanía',
+		'Antártida',
+		'Islas Canarias',
+		'Marruecos',
+		'Madeira'
+	], // 9 categorías
+	aventura: [
+		'Quads','Parapente','Rafting','Explora','Buceo','Paracaídas','Snowboard','Surf',
+		'Senderismo','Escalada','Kayak','Ciclismo','Esquí','Windsurf','Kitesurf','Snorkel',
+		'Buceo nocturno','Safari','Trekking','Camping','Buceo técnico','Observación de aves',
+		'Tour gastronómico','Enoturismo','Fotografía','Yoga retreat','Spa','Cultural','City break'
+	],
+	alojamiento: [
+		'Hotel','Hostal','Apartahotel','Campamento','Glamping','Casa rural'
+	]
+};
 
 // limit + show-more state per section
 const limit = 8;
@@ -171,9 +187,13 @@ const toggleShowAll = (key) => {
   showAllMap.value = { ...showAllMap.value, [key]: !isShowAll(key) };
 };
 
-const visibleCategoriesFor = (key) => (isShowAll(key) ? categoriesList : categoriesList.slice(0, limit));
+const visibleCategoriesFor = (key) => {
+	const list = categoriesMap[key] || [];
+	return isShowAll(key) ? list : list.slice(0, limit);
+};
 const visibleCountFor = (key) => visibleCategoriesFor(key).length;
-const hiddenCountFor = (key) => Math.max(0, categoriesList.length - visibleCountFor(key));
+const hiddenCountFor = (key) => Math.max(0, (categoriesMap[key] || []).length - visibleCountFor(key));
+const categoriesForLength = (key) => (categoriesMap[key] || []).length;
 
 const hideFiltersClick = () => {
 	emit('update:filters', { ...props.filters, showFilters: false });
