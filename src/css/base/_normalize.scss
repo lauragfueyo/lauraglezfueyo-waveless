@@ -42,6 +42,7 @@ body {
 	@include m.font($family: v.$base-family, $color: v.$base-color);
 	@include m.flex-container($direction: column);
 	height: 100vh;
+	font-optical-sizing: auto;
 	min-height: 100vh;
 }
 
