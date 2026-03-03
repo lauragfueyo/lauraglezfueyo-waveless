@@ -32,7 +32,7 @@
 								<div class="card__price-details" v-if="openDetailsId === String(item.id)">
 									<div class="card__price-details-content is-bgcolor">
 										<h4 class="card__price-details-title">Desglose de precios</h4>
-										<button type="button" class="card__price-details-close" aria-label="Cerrar desglose de precios" @click="closeDetails()"><img src="/src/assets/ico-close.svg" alt=""></button>
+										<button type="button" class="card__price-details-close" aria-label="Cerrar desglose de precios" @click="closeDetails()"><img :src="icoCloseUrl" alt=""></button>
 									</div>
 									<div class="card__price-details-content">
 										<p class="card__country">{{ item.country }}, <span class="card__days">{{ item.days }} días</span></p>
@@ -61,6 +61,25 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import Filters from './Filters.vue';
+import icoCloseUrl from '../assets/ico-close.svg?url';
+
+// resolver assets dentro de `src/assets` para que funcionen en dev y build/preview
+const _assets = import.meta.glob('../assets/*.{webp,png,jpg,jpeg,svg,svgz}', { eager: true, as: 'url' });
+function resolveAssetPath(src) {
+	if (!src || typeof src !== 'string') return src;
+	if (!src.startsWith('/src/assets/')) return src;
+	const filename = src.split('/').pop();
+	for (const key in _assets) {
+		if (key.endsWith('/' + filename)) return _assets[key];
+	}
+	// fallback: try to resolve via new URL (works in dev and build)
+	try {
+		return new URL(`../assets/${filename}`, import.meta.url).href;
+	} catch (e) {
+		console.warn('resolveAssetPath: no se pudo resolver', src, e);
+		return src;
+	}
+}
 
 const countries = ref([]);
 const filters = ref({ selectedCategories: [], minPrice: null, maxPrice: null });
@@ -138,7 +157,14 @@ onMounted(async () => {
 		const res = await fetch('/travels.json');
 		const data = await res.json();
 		countries.value = data.countries || [];
-		
+		// si el JSON referencia /src/assets/..., resolver a URL empaquetada por Vite
+		countries.value.forEach(c => {
+			(c.items || []).forEach(i => {
+				if (i?.image?.src) {
+					i.image.src = resolveAssetPath(i.image.src);
+				}
+			});
+		});
 		document.addEventListener('keydown', onKeydownFunction);
 	} catch (e) {
 		console.error('Failed to load travels:', e);
