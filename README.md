@@ -20,7 +20,7 @@ He mantenido el archivo principal `style.scss` en la raíz de la carpeta CSS, ya
 
 En cuanto a los recursos gráficos, he utilizado formatos modernos como WebP y SVG para optimizar el rendimiento, lo que contribuye positivamente a la carga de la página. Las tipografías se han integrado mediante Google Fonts utilizando el embed code incluido en el `<head>` del HTML, asegurando su correcta carga desde el inicio del documento.
 
-Se ha trabajado el etiquetado semántico y el uso de atributos ARIA para reforzar la accesibilidad, buscando que el contenido sea perceptible, operable, comprensible y robusto para todos los usuarios, independientemente de sus capacidades o del dispositivo utilizado.
+Ha trabajado el etiquetado semántico y el uso de atributos ARIA para reforzar la accesibilidad, buscando que el contenido sea perceptible, operable, comprensible y robusto para todos los usuarios, independientemente de sus capacidades o del dispositivo utilizado.
 
 El desarrollo se ha realizado con enfoque mobile-first, garantizando una correcta visualización y adaptación en distintos dispositivos.
 
