@@ -64,7 +64,7 @@ import Filters from './Filters.vue';
 import icoCloseUrl from '../assets/ico-close.svg?url';
 
 // resolver assets dentro de `src/assets` para que funcionen en dev y build/preview
-const _assets = import.meta.glob('../assets/*.{webp,png,jpg,jpeg,svg,svgz}', { eager: true, as: 'url' });
+const _assets = import.meta.glob('../assets/*.{webp,png,jpg,jpeg,svg,svgz}', { eager: true, query: '?url', import: 'default' });
 function resolveAssetPath(src) {
 	if (!src || typeof src !== 'string') return src;
 	if (!src.startsWith('/src/assets/')) return src;
